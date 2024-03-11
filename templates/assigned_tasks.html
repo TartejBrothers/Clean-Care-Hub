@@ -1,20 +1,37 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Assigned Tasks</title>
+    <link rel="stylesheet" href="{% static 'css/tracklist.css' %}" />
+    <link rel="icon" href="{% static 'assets/favicon.ico' %}" />
   </head>
   <body>
     <h1>Assigned Tasks</h1>
     <ul>
       {% for task in assigned_tasks %}
-      <li>{{ task.description }} - Deadline: {{ task.deadline }}</li>
-      <form method="post" action="{% url 'update_task_status' task.id %}">
-        {% csrf_token %}
-        <button type="submit" name="status" value="yes">Yes</button>
-        <button type="submit" name="status" value="no">No</button>
-      </form>
+      <div class="infobox">
+        <li>
+          <b>Task to be Done:</b> {{ task.description }}
+          <br />
+          <b>Deadline:</b> {{ task.deadline }}
+        </li>
+        <form method="post" action="{% url 'update_task_status' task.id %}">
+          {% csrf_token %}
+          <div class="buttonrow">
+            <button
+              type="submit"
+              name="status"
+              value="yes"
+              style="background-color: #12a56c"
+            >
+              Done
+            </button>
+          </div>
+        </form>
+      </div>
       {% endfor %}
     </ul>
     {% if messages %}
