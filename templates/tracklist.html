@@ -10,9 +10,12 @@
   </head>
   <body>
     <h1>Tracklist Form</h1>
-    <form method="post">
+    <form method="post" class="trackform">
       {% csrf_token %} {{ form.as_p }}
-      <button type="submit">Submit</button>
+      <div class="buttonrow">
+        <a href="../"><button class="btn">Home</button></a>
+        <button type="submit" class="btn">Submit</button>
+      </div>
     </form>
   </body>
 </html>

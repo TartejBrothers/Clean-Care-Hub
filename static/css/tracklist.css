@@ -21,9 +21,9 @@ body {
   justify-content: center;
   min-height: 100vh;
 }
-
 h1 {
   color: #f5f5f7;
+
   margin: 20px 20px 10px 20px;
   text-align: center;
 }
@@ -85,7 +85,13 @@ input[type="file"]::file-selector-button {
     rgba(252, 70, 107, 1) 100%
   );
 }
+.gray-bg {
+  background-color: #808080; /* Gray background color */
+}
 
+.white-text {
+  color: #ffffff; /* White text color */
+}
 .custom-file-upload:hover {
   background-color: #2980b9;
 }
@@ -130,7 +136,6 @@ ul li {
   margin-bottom: 20px;
 }
 .btn {
-  margin-top: 14px;
   background-color: #f5f5f7;
   color: #000000;
   padding: 10px 20px;
@@ -142,6 +147,50 @@ ul li {
 .btn:hover {
   scale: 1.2;
   transition: all 0.5s ease;
+}
+.trackform {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  background-color: #2e2e2e;
+  border-radius: 20px;
+  padding: 20px;
+}
+
+.trackform p {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.assigned_nav {
+  background-color: #1f1f1f;
+  position: fixed;
+  top: 0;
+  padding: 10px;
+  display: flex;
+  width: 100%;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.trackform label {
+  font-size: 18px;
+  flex: 1;
+}
+
+.trackform input {
+  border-radius: 10px;
+  border: none;
+  padding: 10px 20px;
+  background-color: #f5f5f7;
+  color: #000000;
+  flex: 1;
+  margin-left: 10px;
+}
+a {
+  height: 100%;
+  padding: 0px;
 }
 @media screen and (max-width: 1000px) {
   form {
