@@ -1,0 +1,163 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;1,100;1,200;1,300;1,400;1,500&display=swap");
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+}
+html {
+  background-color: #000000;
+  color: #ffff;
+}
+body {
+  display: flex;
+  background-color: #1d1d1d;
+  background: url("../assets/bg.png") no-repeat center center/cover;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+.header h1 {
+  color: #f5f5f7;
+  margin: 20px 20px 10px 20px;
+  text-align: center;
+}
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+  height: 70px;
+  background-color: #313131;
+  display: flex;
+  justify-content: space-between;
+  padding-inline: 40px;
+  flex-direction: row;
+  align-items: center;
+}
+.navleft p {
+  color: #e9e9e9;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+.navright button {
+  background-color: #fefefe;
+  color: #000000;
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.5s ease;
+}
+.navright button:hover {
+  scale: 1.2;
+  transition: all 0.5s ease;
+}
+.header p {
+  color: #6c757d;
+  margin-bottom: 40px;
+  text-align: center;
+  font-size: 30px;
+}
+input[type="file"]::file-selector-button {
+  margin-right: 20px;
+  border: none;
+  background: #8f8f8f;
+  padding: 10px 20px;
+  border-radius: 10px;
+  background: linear-gradient(
+    112.1deg,
+    rgb(32, 38, 57) 11.4%,
+    rgb(63, 76, 119) 70.2%
+  );
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.2s ease-in-out;
+}
+.custom-file-upload {
+  display: inline-block;
+  cursor: pointer;
+
+  color: white;
+  border-radius: 10px;
+  font-size: 14px;
+  background: rgb(63, 94, 251);
+  background: radial-gradient(
+    circle,
+    rgba(63, 94, 251, 1) 0%,
+    rgba(252, 70, 107, 1) 100%
+  );
+}
+
+.custom-file-upload:hover {
+  background-color: #2980b9;
+}
+
+.compress_image {
+  background-color: #fefefe;
+  color: rgb(0, 0, 0);
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.compress_image:hover {
+  background-color: #f5f5f7;
+}
+
+.status {
+  margin-top: 10px;
+}
+
+#message {
+  color: #333;
+  font-size: 14px;
+}
+.info_container {
+  display: flex;
+  flex-direction: column;
+  color: #c2c2c2;
+  font-size: 20px;
+  margin-top: 20px;
+}
+.resultimg,
+.wrapperimg {
+  width: 30vw;
+}
+ul li {
+  margin-bottom: 10px;
+}
+ul li {
+  list-style: none;
+}
+
+@media screen and (max-width: 1000px) {
+  .wrapper {
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .wrapperimg,
+  .resultimg {
+    width: 90vw;
+  }
+  ul li {
+    text-align: center;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .compress_image {
+    margin: 20px auto 20px auto;
+  }
+}
