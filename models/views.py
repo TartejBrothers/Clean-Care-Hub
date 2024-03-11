@@ -9,6 +9,7 @@ from ultralytics import YOLO
 from django.http import JsonResponse
 from django.http import StreamingHttpResponse
 import cv2
+import numpy as np
 
 classes = ["mixed", "restaurant-fastfood", "retail-groceries"]
 
