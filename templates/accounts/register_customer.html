@@ -4,7 +4,7 @@ Clean Care Hub {% endblock heading %} {% block content %}
 <form class="p-4 p-md-5 border rounded-6" method="POST">
   {% csrf_token %}
   <!-- Email input field with floating label -->
-  <div class="form-floating mb-3">
+  <div class="form-floating mb-3 rounded-6">
     {% render_field form.email class="form-control" %}
     <label for="floatingInput">Email address</label>
   </div>

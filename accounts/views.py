@@ -7,9 +7,8 @@ from .form import RegisterCustomerForm
 
 
 User = get_user_model()
-
-
 # View for customer registration
+
 def register_customer(request):
     if request.method == "POST":
         form = RegisterCustomerForm(request.POST)
