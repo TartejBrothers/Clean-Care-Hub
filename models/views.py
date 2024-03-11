@@ -7,6 +7,8 @@ import os
 from PIL import Image, ImageDraw
 from ultralytics import YOLO
 from django.http import JsonResponse
+from django.http import StreamingHttpResponse
+import cv2
 
 classes = ["mixed", "restaurant-fastfood", "retail-groceries"]
 
@@ -77,3 +79,56 @@ def index(request):
             "litterdetection.html",
             {"message": str(e)},
         )
+
+
+def live_video_feed(request):
+    # Load YOLO model
+    model = YOLO("best.pt")
+    model.conf = 0.3  # Adjust confidence threshold as needed
+
+    # Function to generate frames from the live video feed
+    def generate_frames():
+        # Initialize webcam
+        cap = cv2.VideoCapture(0)
+
+        # Check if the webcam is opened successfully
+        if not cap.isOpened():
+            raise Exception("Failed to open webcam")
+
+        # Loop to continuously capture frames from the webcam
+        while True:
+            success, frame = cap.read()
+            if not success:
+                break
+
+            # Perform inference
+            img = Image.fromarray(frame)  # Convert frame to PIL Image
+            results = model(img)
+
+            # Draw bounding boxes on the frame
+            # Draw bounding boxes on the frame
+            for detection in results:
+                for box in detection.boxes.xyxy:
+                    x1, y1, x2, y2 = box  # Access box coordinates directly
+                    x1, y1, x2, y2 = (
+                        int(x1),
+                        int(y1),
+                        int(x2),
+                        int(y2),
+                    )  # Convert to integers
+                    cv2.rectangle(frame, (x1, y1), (x2, y2), (0, 255, 0), 2)
+
+            # Convert frame to JPEG format and yield it
+            _, buffer = cv2.imencode(".jpg", frame)
+            frame_bytes = buffer.tobytes()
+            yield (
+                b"--frame\r\n"
+                b"Content-Type: image/jpeg\r\n\r\n" + frame_bytes + b"\r\n"
+            )
+
+        # Release the video capture object
+        cap.release()
+
+    return StreamingHttpResponse(
+        generate_frames(), content_type="multipart/x-mixed-replace; boundary=frame"
+    )
