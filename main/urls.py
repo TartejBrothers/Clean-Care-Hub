@@ -23,22 +23,22 @@ from django.urls import path, include
 from accounts import urls
 from tracklist.views import (
     tracklist_form,
-    deletepage,
     view_assigned_tasks,
     update_task_status,
+    success_page,
 )
 
 urlpatterns = [
     path("", include("accounts.urls")),
     path("admin/", admin.site.urls),
     path("tracklist/", tracklist_form, name="tracklist"),
-    path("deletepage/", deletepage, name="deletepage"),
     path("assigned_tasks/", view_assigned_tasks, name="assigned_tasks"),
     path(
         "update_task_status/<int:task_id>/",
         update_task_status,
         name="update_task_status",
     ),
+    path("success_page/", success_page, name="success"),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

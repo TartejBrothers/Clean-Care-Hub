@@ -17,7 +17,7 @@ def tracklist_form(request):
         form = TracklistForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect("success_page")  # Redirect to a success page
+            return redirect("../success_page")
     else:
         form = TracklistForm()
     return render(request, "tracklist.html", {"form": form})
@@ -30,10 +30,6 @@ def view_assigned_tasks(request):
     return render(request, "assigned_tasks.html", {"assigned_tasks": assigned_tasks})
 
 
-def deletepage(request):
-    return render("success.html")
-
-
 def update_task_status(request, task_id):
     if request.method == "POST":
         task = Tracklist.objects.get(pk=task_id)
@@ -42,3 +38,7 @@ def update_task_status(request, task_id):
             task.delete()
             messages.success(request, "Great work done")
     return redirect("assigned_tasks")
+
+
+def success_page(request):
+    return render(request, "success.html")
