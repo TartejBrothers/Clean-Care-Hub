@@ -42,10 +42,14 @@ def index(request):
 
         # Resize image while maintaining aspect ratio
         img = Image.open(path)
-        img_resized = resize_image(img, (480, 640))
-        print("Resized image dimensions:", img_resized.size)  # Print the dimensions
+        img.thumbnail((480, 640))
+
+        # Save the resized image
         resized_path = os.path.join(settings.MEDIA_ROOT, "resized_image.jpg")
-        img_resized.save(resized_path)
+        img.save(resized_path)
+
+        # Print the dimensions of the resized image
+        print("Resized image dimensions:", img.size)
 
         # Load YOLO model
         model = YOLO("best.pt")  # Load pre-trained model
