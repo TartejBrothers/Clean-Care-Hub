@@ -102,7 +102,7 @@ def resize_image(image, target_size):
 def live_video_feed(request):
     # Load YOLO model
     model = YOLO("best.pt")
-    model.conf = 0.3  # Adjust confidence threshold as needed
+    model.conf = 0.5  # Adjust confidence threshold as needed
 
     # Function to generate frames from the live video feed
     def generate_frames():
@@ -123,7 +123,6 @@ def live_video_feed(request):
             img = Image.fromarray(frame)  # Convert frame to PIL Image
             results = model(img)
 
-            # Draw bounding boxes on the frame
             # Draw bounding boxes on the frame
             for detection in results:
                 for box in detection.boxes.xyxy:
