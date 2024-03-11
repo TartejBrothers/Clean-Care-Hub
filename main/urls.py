@@ -27,6 +27,7 @@ from tracklist.views import (
     update_task_status,
     success_page,
 )
+from models.views import index
 
 urlpatterns = [
     path("", include("accounts.urls")),
@@ -39,6 +40,7 @@ urlpatterns = [
         name="update_task_status",
     ),
     path("success_page/", success_page, name="success"),
+    path("litter/", index, name="litter"),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
