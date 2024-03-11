@@ -1,0 +1,74 @@
+<!-- base.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+
+    <!-- Custom Global CSS -->
+    {% load static %} <
+    <link rel="stylesheet" href="{% static 'css/global.css' %}" />
+    <link rel="icon" href="{% static 'images/favicon.ico' %}" />
+    <title>Clean Care Hub</title>
+  </head>
+
+  <body class="bg-dark">
+    <!-- Main content container with header and messages -->
+    <div class="container py-5">
+      <div class="row align-items-center g-5">
+        <!-- Left column with heading and description -->
+        <div class="col-lg-7 text-center text-lg-start">
+          <h1 class="display-4 fw-bold lh-1 mb-3">
+            {% block heading %}Heading Placeholder{% endblock heading %}
+          </h1>
+          <p class="fs-5">Welcome to Clean Care Hub!</p>
+        </div>
+        <!-- Right column for messages and block content -->
+        <div class="col-md-10 mx-auto col-lg-5">
+          <!-- Display messages if any -->
+          {% if messages %} {% for message in messages %}
+          <div class="alert alert-{{message.tags}} message" role="alert">
+            <b>{{message}}</b>
+            <div class="btn del-msg cursor-pointer">&times;</div>
+          </div>
+          {% endfor %} {% endif %}
+
+          <!-- Block content to be filled by child templates -->
+          {% block content %} {% endblock content %}
+        </div>
+      </div>
+    </div>
+
+    <!-- JavaScript section for handling messages -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        // messages timeout for 10 sec
+        setTimeout(function () {
+          $(".message").fadeOut("slow");
+        }, 10000); // 10000 milliseconds = 10 seconds
+
+        // delete message
+        $(document).on("click", ".del-msg", function () {
+          $(this).parent().attr("style", "display:none;");
+        });
+      });
+    </script>
+    <!-- Bootstrap Bundle with Popper -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

@@ -1,0 +1,19 @@
+.result-video{
+    width:40%;
+}
+.wrapper-video{
+    display:flex;
+    gap:20px;
+    width: 100%;
+    justify-content: center;
+}
+
+@media screen and (max-width: 1000px) {
+    .wrapper-video{
+        flex-direction: column;
+        align-items: center;
+    }
+    .result-video{
+        width: 80%;
+    }
+}

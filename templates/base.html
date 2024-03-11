@@ -1,0 +1,59 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Clean Care Hub</title>
+    <link rel="stylesheet" href="{% static 'css/landing.css' %}" />
+    <link rel="icon" href="{% static 'assets/favicon.ico' %}" />
+  </head>
+  <body>
+    <div class="navbar">
+      <div class="navleft"><p>Clean Care Hub</p></div>
+      <div class="navright">
+        <a href="../logout">
+          {% if request.user.is_authenticated %}
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              id="userDropdown"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              {{ request.user.email }}
+            </a>
+          </li>
+          <a class="submitbutton" href="../logout/"><button>Logout</button></a>        
+      </div>
+    </div>
+    <div class="container-1">
+      <div class="header">
+        <h2>Revive your Retro memories with a single click</h2>
+      </div>
+    </div>
+    <div>
+     <div class="cards">
+      <div class="header model-card">
+        <div class="container">
+          <h2>Revive Picture</h2>
+          <img width="350" height="350" src="{% static 'assets/img.gif' %}" class="model-img" alt="photo">
+          <a href="../colorised/"><button class="btn">COLORIZE PHOTO</button></a>    
+      </div>
+      </div>
+      <div class="header model-card">
+        <div class="container">
+          <h2>Revive Video</h2>
+          <img width="350" height="350" src="{% static 'assets/vid.gif' %}" class="model-img" alt="photo">
+          <a href="../colorised-video/"><button class="btn">COLORIZE VIDEO</button></a>    
+      </div>
+      </div>
+     </div>
+    </div>
+     {% endif %}
+     {% block content %}
+    {% endblock content %}
+  </body>
+</html>

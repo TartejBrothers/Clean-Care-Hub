@@ -1,0 +1,28 @@
+{% extends 'accounts/index.html' %}
+
+{% block heading %}
+    Login to Continue
+{% endblock heading %}
+
+{% block content %}
+    <!-- Login form section -->
+    <form class="p-4 p-md-5 border rounded-6" method="POST">
+        {% csrf_token %}
+        <!-- Email input field -->
+        <div class="mb-3">
+            <label for="email" class="form-label">Email address</label>
+            <input type="email" name="username" class="form-control" id="email" placeholder="Enter your email">
+        </div>
+        <!-- Password input field -->
+        <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" name="password" class="form-control" id="password" placeholder="Enter your password">
+        </div>
+        <!-- Sign-in button -->
+        <button class="w-100 btn btn-lg submitbutton" type="submit">Sign In</button>
+        <!-- Horizontal line for visual separation -->
+        <hr class="my-4">
+        <!-- Link to registration page for new users -->
+        <small class="text-muted">Don't have an account? <a href="{% url 'register-customer' %}">Sign Up</a></small>
+    </form>
+{% endblock content %}

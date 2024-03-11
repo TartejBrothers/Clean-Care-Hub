@@ -1,0 +1,153 @@
+/* global.css */
+
+/* Base Styles */
+body {
+  display: flex;
+  background-color: #1d1d1d;
+  background: url("../assets/bg.png") no-repeat center center/cover;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+h1 {
+  color: #f5f5f7;
+}
+
+form {
+  border-radius: 30px;
+  background-color: #333;
+  color: #626262;
+}
+
+p {
+  color: #6c757d;
+}
+
+
+.alert {
+  border-radius: 8px;
+}
+
+/* Styles from login.html */
+.form-label {
+  margin-bottom: 0.5rem;
+}
+
+.form-control {
+  border-radius: 30px;
+  display: block;
+  width: 100%;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #495057;
+  background: #1d1d1d;
+  padding: 10px 20px;
+  background-clip: padding-box;
+  border: 1px solid #f5f5f7;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+form label {
+  margin-left: 10px;
+  color: #bebebe;
+}
+.form-control label {
+  margin-left: 10px;
+  color: #bebebe;
+}
+
+.submitbutton {
+  text-decoration: none;
+  color: #1d1d1f;
+  background-color: #f5f5f7;
+  border-radius: 30px;
+  border: solid 2px black;
+  font-weight: normal;
+  text-transform: uppercase;
+  transition: all 0.2s ease-in-out;
+}
+
+.submitbutton:hover {
+  scale: 1.025;
+  color: #1d1d1f;
+  background-color: #f5f5f7;
+  box-shadow: 0 5px 15px rgba(255, 255, 255, 0.4);
+  
+}
+
+/* Styles from register_customer.html */
+
+.form-floating {
+  position: relative;
+}
+
+.form-floating input {
+  height: calc(2.5em + 0.75rem + 2px);
+  width: 100%;
+  padding: 0.75rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+  background-color: #1d1d1d;
+  color: #bebebe;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.form-floating label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 0.75rem;
+  pointer-events: none;
+  transition: transform 0.15s ease-in-out, color 0.15s ease-in-out,
+    opacity 0.15s ease-in-out;
+}
+
+.form-control:focus {
+  border-color: #80bdff;
+  box-shadow: 0 0 0 0.25rem rgba(0, 123, 255, 0.25);
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.btn-primary:hover {
+  color: #fff;
+  background-color: #0056b3;
+  border-color: #0056b3;
+}
+
+/* navbar */
+
+body {
+  font-family: "Arial", sans-serif;
+  font-size: 16px;
+  color: #333;
+}
+
+.navbar {
+  background-color: #343a40;
+}
+
+.navbar-brand {
+  font-size: 1.5rem;
+}
+
+.nav-link {
+  color: #fff !important;
+}
+
+.logout-btn {
+  color: #343a40;
+}
+
+
+
