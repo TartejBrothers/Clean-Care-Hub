@@ -4,67 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Success Page</title>
-    <style>
-      /* Add your CSS styles here */
-      .tracklist-item {
-        margin-bottom: 10px;
-      }
-    </style>
   </head>
   <body>
-    <h1>Success Page</h1>
-    {% if tracklist_objects %} {% for tracklist_object in tracklist_objects %}
-    <div class="tracklist-item">
-      <p>{{ tracklist_object.description }}</p>
-      <button onclick="showConfirmation('{{ tracklist_object.id }}')">
-        Correct
-      </button>
-      <button onclick="deleteTracklist('{{ tracklist_object.id }}')">
-        Cross
-      </button>
-    </div>
-    {% endfor %} {% else %}
-    <p>No tracklist objects available.</p>
-    {% endif %}
-
-    <!-- Confirmation Modal -->
-    <div id="confirmationModal" style="display: none">
-      <p>Great work!</p>
-      <button onclick="confirmAndClose()">OK</button>
-    </div>
-
-    <script>
-      function showConfirmation(tracklistId) {
-        // Display confirmation modal
-        document.getElementById("confirmationModal").style.display = "block";
-
-        // Store the tracklist ID for further processing
-        window.tracklistId = tracklistId;
-      }
-
-      function confirmAndClose() {
-        // Send request to delete the tracklist object
-        deleteTracklist(window.tracklistId);
-
-        // Close confirmation modal
-        document.getElementById("confirmationModal").style.display = "none";
-      }
-
-      function deleteTracklist(tracklistId) {
-        // Send an AJAX request to delete the tracklist object with the provided ID
-        // Example:
-        // fetch(`/delete-tracklist/${tracklistId}`, {
-        //     method: 'DELETE',
-        // }).then(response => {
-        //     if (response.ok) {
-        //         // Remove the deleted tracklist item from the page
-        //         document.getElementById(`tracklist-${tracklistId}`).remove();
-        //     }
-        // });
-
-        // For demonstration, just removing the tracklist item from the page without actual deletion
-        document.getElementById(`tracklist-${tracklistId}`).remove();
-      }
-    </script>
+    <h1>Success!</h1>
+    <p>Your action was successful.</p>
   </body>
 </html>
