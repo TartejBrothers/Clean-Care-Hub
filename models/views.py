@@ -50,7 +50,7 @@ def index(request):
             for box in detection.boxes.xyxy:
                 x1, y1, x2, y2 = box.tolist()[:4]  # Extract bounding box coordinates
                 img_draw = ImageDraw.Draw(img)
-                img_draw.rectangle([x1, y1, x2, y2], outline="red")
+                img_draw.rectangle([x1, y1, x2, y2], outline="yellow", width=5)
 
         # Save result image
         result_image_path = os.path.join(settings.MEDIA_ROOT, "result_image.jpg")
