@@ -24,7 +24,7 @@ def tracklist_form(request):
     if request.user.is_superuser:
         return render(request, "tracklist.html", {"form": form})
     else:
-        return render(request, "base.html")
+        return render(request, "adminaccess.html")
 
 
 @login_required

@@ -1,0 +1,18 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Access</title>
+    <link rel="stylesheet" href="{% static 'css/tracklist.css' %}" />
+    <link rel="icon" href="{% static 'assets/favicon.ico' %}" />
+  </head>
+  <body>
+    <h1>Admin Access Required</h1>
+    <p>For adding tasks, Admin permissions are required</p>
+    <a class="submitbutton" href="../logout/"
+      ><button class="btn">Logout</button></a
+    >
+  </body>
+</html>
