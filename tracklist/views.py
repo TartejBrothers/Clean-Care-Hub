@@ -20,7 +20,11 @@ def tracklist_form(request):
             return redirect("../success_page")
     else:
         form = TracklistForm()
-    return render(request, "tracklist.html", {"form": form})
+
+    if request.user.is_superuser:
+        return render(request, "tracklist.html", {"form": form})
+    else:
+        return render(request, "base.html")
 
 
 @login_required
