@@ -27,6 +27,7 @@
             </a>
           </li>
           <a class="submitbutton" href="../logout/"><button>Logout</button></a>        
+        {% endif %}
       </div>
     </div>
     <div class="container-1">
@@ -35,25 +36,28 @@
       </div>
     </div>
     <div>
-     <div class="cards">
-      <div class="header model-card">
-        <div class="container">
-          <h2>Task list</h2>
-          <img src="{% static 'assets/noimage.jpg' %}" class="model-img" alt="photo">
-          <a href="../tracklist/"><button class="btn">Task list</button></a>    
+      <div class="cards">
+        <div class="header model-card">
+          <div class="container">
+            <h2>Task list</h2>
+            <img src="{% static 'assets/noimage.jpg' %}" class="model-img" alt="photo">
+            {% if user.is_superuser %}
+            <a href="../tracklist/"><button class="btn">Task list</button></a>    
+            {% else %}
+            <a href="../assigned_tasks/"><button class="btn">Task list</button></a>    
+            {% endif %}
+          </div>
+        </div>
+        <div class="header model-card">
+          <div class="container">
+            <h2>Check sanitation</h2>
+            <img  src="{% static 'assets/noimage.jpg' %}" class="model-img" alt="photo">
+            <a href="../colorised-video/"><button class="btn">Check sanitation</button></a>    
+          </div>
+        </div>
       </div>
-      </div>
-      <div class="header model-card">
-        <div class="container">
-          <h2>Check sanitation</h2>
-          <img  src="{% static 'assets/noimage.jpg' %}" class="model-img" alt="photo">
-          <a href="../colorised-video/"><button class="btn">Check sanitation</button></a>    
-      </div>
-      </div>
-     </div>
     </div>
-     {% endif %}
-     {% block content %}
+    {% block content %}
     {% endblock content %}
   </body>
 </html>

@@ -1,0 +1,58 @@
+{% load static %}
+{% if request.user.is_authenticated %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Retro Revive</title>
+    <!-- <link rel="stylesheet" href="{% static 'css/global.css' %}" /> -->
+    <link rel="stylesheet" href="{% static 'css/home.css' %}" />
+    <link rel="icon" href="{% static 'assets/favicon.ico' %}" />
+  </head>
+
+  <body>
+    <div class="navbar">
+      <div class="navleft"><p>Retro Revive</p></div>
+      <div class="navright">
+        <a href="../"><button>Home</button></a>
+      </div>
+    </div>
+    <div class="header">
+      <h1><span>Retro Revive</span></h1>
+      <p>Grayscale To Color</p>
+    </div>
+
+    <form method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+      <input
+        class="custom-file-upload"
+        type="file"
+        accept="image"
+        name="image"
+        id="file"
+      />
+      <button class="compress_image" type="submit" id="submitBtn">
+        Colorise
+      </button>
+      <div class="status">
+        <p id="message">{{ message }}</p>
+      </div>
+    </form>
+
+    <div class="wrapper">
+      <img
+        class="wrapperimg"
+        src="{% if image_url %}{{ image_url }}{% else %}{% static 'assets/noimage.jpg' %}{% endif %}"
+      />
+
+      <!-- Display the result image -->
+      <img
+        class="resultimg"
+        src="{% if result_image_url %}{{ result_image_url }}{% endif %}"
+      />
+    </div>
+  </body>
+</html>
+{% endif %}
