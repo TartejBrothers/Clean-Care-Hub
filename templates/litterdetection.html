@@ -1,12 +1,11 @@
-{% load static %}
-{% if request.user.is_authenticated %}
+{% load static %} {% if request.user.is_authenticated %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Retro Revive</title>
+    <title>Clean Care Hub</title>
     <!-- <link rel="stylesheet" href="{% static 'css/global.css' %}" /> -->
     <link rel="stylesheet" href="{% static 'css/home.css' %}" />
     <link rel="icon" href="{% static 'assets/favicon.ico' %}" />
@@ -14,14 +13,14 @@
 
   <body>
     <div class="navbar">
-      <div class="navleft"><p>Retro Revive</p></div>
+      <div class="navleft"><p>Clean Care Hub</p></div>
       <div class="navright">
         <a href="../"><button>Home</button></a>
       </div>
     </div>
     <div class="header">
-      <h1><span>Retro Revive</span></h1>
-      <p>Grayscale To Color</p>
+      <h1><span>Clean Care Hub</span></h1>
+      <p>Detect Litter in Realtime</p>
     </div>
 
     <form method="POST" enctype="multipart/form-data">
@@ -34,7 +33,7 @@
         id="file"
       />
       <button class="compress_image" type="submit" id="submitBtn">
-        Colorise
+        Detect
       </button>
       <div class="status">
         <p id="message">{{ message }}</p>
