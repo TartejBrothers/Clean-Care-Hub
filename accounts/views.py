@@ -33,21 +33,21 @@ def register_customer(request):
 
 # View for user login
 def login_user(request):
-    if request.method == 'POST':
+    if request.method == "POST":
         # Authenticate user and redirect to dashboard if successful
-        username = request.POST.get('username')
-        password = request.POST.get('password')
+        username = request.POST.get("username")
+        password = request.POST.get("password")
         user = authenticate(request, username=username, password=password)
         if user is not None and user.is_active:
             login(request, user)
-            return redirect('/')
+            return redirect("/")
         else:
             # Display warning message for login failure and redirect to login page
-            messages.warning(request, 'Something went wrong. Please check form errors')
-            return redirect('login')
+            messages.warning(request, "Something went wrong. Please check form errors")
+            return redirect("login")
     else:
         # Display login form for GET requests
-        return render(request, 'accounts/login.html')
+        return render(request, "accounts/login.html")
 
 
 # View for user logout
@@ -61,6 +61,7 @@ def logout_user(request):
 # Additional comments for planned features (change password, update profile) can be added here
 def home(request):
     if request.user.is_authenticated:
-        return render(request, 'base.html')
+        user_email = request.user.email
+        return render(request, "base.html")
     else:
-        return redirect('login')
+        return redirect("login")

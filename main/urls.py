@@ -21,10 +21,12 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.urls import path, include
 from accounts import urls
+from tracklist.views import tracklist_form
 
 urlpatterns = [
     path("", include("accounts.urls")),
     path("admin/", admin.site.urls),
+    path("tracklist/", tracklist_form, name="tracklist"),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
