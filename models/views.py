@@ -1,13 +1,13 @@
-from django.shortcuts import render
 from django.template.response import TemplateResponse
 from django.core.files.storage import FileSystemStorage
 from django.utils.datastructures import MultiValueDictKeyError
 from django.conf import settings
 import os
-from PIL import Image, ImageDraw
+from PIL import ImageDraw, Image, ImageOps
 from ultralytics import YOLO
 from django.http import JsonResponse
 from django.http import StreamingHttpResponse
+from django.shortcuts import render
 import cv2
 import numpy as np
 
@@ -40,12 +40,19 @@ def index(request):
         _image = fss.save(image.name, image)
         path = os.path.join(settings.MEDIA_ROOT, _image)
 
+        # Resize image while maintaining aspect ratio
+        img = Image.open(path)
+        img_resized = resize_image(img, (480, 640))
+        print("Resized image dimensions:", img_resized.size)  # Print the dimensions
+        resized_path = os.path.join(settings.MEDIA_ROOT, "resized_image.jpg")
+        img_resized.save(resized_path)
+
         # Load YOLO model
         model = YOLO("best.pt")  # Load pre-trained model
         model.conf = 0.3  # Adjust confidence threshold as needed
 
         # Perform inference
-        img = Image.open(path).convert("RGB")
+        img = Image.open(resized_path).convert("RGB")
         results = model(img)
 
         # Draw bounding boxes on image
@@ -80,6 +87,12 @@ def index(request):
             "litterdetection.html",
             {"message": str(e)},
         )
+
+
+def resize_image(image, target_size):
+    width_height_tuple = (target_size[1], target_size[0])  # PIL uses (width, height)
+    resized_image = ImageOps.fit(image, width_height_tuple)
+    return resized_image
 
 
 def live_video_feed(request):
