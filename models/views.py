@@ -52,8 +52,8 @@ def index(request):
         print("Resized image dimensions:", img.size)
 
         # Load YOLO model
-        model = YOLO("new.pt")  # Load pre-trained model
-        model.conf = 0.3  # Adjust confidence threshold as needed
+        model = YOLO("best.pt")  # Load pre-trained model
+        model.conf = 0.5  # Adjust confidence threshold as needed
 
         # Perform inference
         img = Image.open(resized_path).convert("RGB")
@@ -102,7 +102,7 @@ def resize_image(image, target_size):
 def live_video_feed(request):
     # Load YOLO model
     model = YOLO("best.pt")
-    model.conf = 0.5  # Adjust confidence threshold as needed
+    model.conf = 0.8  # Adjust confidence threshold as needed
 
     # Function to generate frames from the live video feed
     def generate_frames():
