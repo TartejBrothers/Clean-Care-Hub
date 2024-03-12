@@ -52,7 +52,7 @@ def index(request):
         print("Resized image dimensions:", img.size)
 
         # Load YOLO model
-        model = YOLO("best.pt")  # Load pre-trained model
+        model = YOLO("new.pt")  # Load pre-trained model
         model.conf = 0.3  # Adjust confidence threshold as needed
 
         # Perform inference
