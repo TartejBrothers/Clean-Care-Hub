@@ -1,0 +1,60 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Leaderboard</title>
+    <link rel="stylesheet" href="{% static 'css/tracklist.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/leaderboard.css' %}" />
+    <link rel="icon" href="{% static 'assets/favicon.ico' %}" />
+</head>
+<body>
+    <div class="navbar">
+        <div class="navright">
+          <a href="../"><button>Home</button></a>
+        </div>
+      </div>
+    <div class="tabs">
+    <button class="tab-items" onclick="showLeaderboard()">Leaderboard</button>
+    <button class="tab-items" onclick="showBadges()">Badges</button>
+    </div>
+<div id="leaderboard" style="display:none;">
+    <h1 class="title">Leaderboard</h1>
+    <ol class="leaderboard">
+        {% for user in leaderboard %}
+            <li>
+                <span class="username">{{ user.user.username }}</span>
+                <span class="points">{{ user.points }} points</span>
+            </li>
+        {% empty %}
+            <li>No users found</li>
+        {% endfor %}
+    </ol>
+    
+</div>
+
+<div id="badges" style="display:none;">
+    <h1>Badges</h1>
+    <ul>
+        {% for badge in badges %}
+            <li>{{ badge.name }} - {{ badge.description }}</li>
+        {% empty %}
+            <li>No badges found</li>
+        {% endfor %}
+    </ul>
+</div>
+
+<script>
+    function showLeaderboard() {
+        document.getElementById('leaderboard').style.display = 'block';
+        document.getElementById('badges').style.display = 'none';
+    }
+
+    function showBadges() {
+        document.getElementById('leaderboard').style.display = 'none';
+        document.getElementById('badges').style.display = 'block';
+    }
+</script>
+</body>
+</html>

@@ -21,6 +21,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.urls import path, include
 from accounts import urls
+from leaderboard import urls
 from tracklist.views import (
     tracklist_form,
     view_assigned_tasks,
@@ -31,6 +32,7 @@ from models.views import index, live_video_feed
 
 urlpatterns = [
     path("", include("accounts.urls")),
+    path("leaderboard/", include("leaderboard.urls")),
     path("admin/", admin.site.urls),
     path("tracklist/", tracklist_form, name="tracklist"),
     path("assigned_tasks/", view_assigned_tasks, name="assigned_tasks"),

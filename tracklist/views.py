@@ -4,6 +4,9 @@ from django.contrib.auth.decorators import login_required
 from .models import Tracklist
 from django.http import JsonResponse
 from django.contrib import messages
+from .forms import TracklistForm
+from django.contrib import messages
+from leaderboard.models import Leaderboard, Achievement, Badge
 
 # Create your views here.
 
@@ -39,6 +42,18 @@ def update_task_status(request, task_id):
         task = Tracklist.objects.get(pk=task_id)
         status = request.POST.get("status")
         if status == "yes":
+            # Increase points for the user
+            user = request.user
+            points_earned = 5  # Adjust points based on your criteria
+            leaderboard, created = Leaderboard.objects.get_or_create(user=user)
+            leaderboard.points += points_earned
+            leaderboard.save()
+
+            # Check if the user has earned any badges
+            if leaderboard.points >= 50:
+                badge, created = Badge.objects.get_or_create(name="Sanitation Master", description="Awarded for completing 5 successful sanitation checks.")
+                Achievement.objects.create(user=user, badge=badge)
+            
             task.delete()
             messages.success(request, "Great work done")
     return redirect("assigned_tasks")
