@@ -102,7 +102,7 @@ def resize_image(image, target_size):
 def live_video_feed(request):
     # Load YOLO model
     model = YOLO("best.pt")
-    model.conf = 0.8  # Adjust confidence threshold as needed
+    model.conf = 1.0  # Adjust confidence threshold as needed
 
     # Function to generate frames from the live video feed
     def generate_frames():
