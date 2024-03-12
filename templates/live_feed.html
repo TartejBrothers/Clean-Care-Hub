@@ -1,15 +1,16 @@
-<!-- live_feed.html -->
-
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Live Video Feed</title>
+    <link rel="stylesheet" href="{% static 'css/tracklist.css' %}" />
+    <link rel="icon" href="{% static 'assets/favicon.ico' %}" />
   </head>
   <body>
     <h1>Live Video Feed with Real-time Bounding Box Detection</h1>
-    <div>
+    <div class="videofeed">
       <img
         src="{% url 'live_video_feed' %}"
         width="640"

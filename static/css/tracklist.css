@@ -192,6 +192,13 @@ a {
   height: 100%;
   padding: 0px;
 }
+.videofeed {
+  max-width: 80%;
+  margin: 20px auto 20px auto;
+}
+.videofeed img {
+  width: 100%;
+}
 @media screen and (max-width: 1000px) {
   form {
     width: 90vw;
