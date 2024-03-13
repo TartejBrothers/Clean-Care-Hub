@@ -15,7 +15,6 @@
 <h3 align="center">Working Example</h3>
 <div align="center">
 
-https://github.com/TartejBrothers/Retro-Revive/assets/113835041/3d5cfd92-2605-487f-9d25-63fe03146358
 
 https://youtu.be/yYO8OdkMDpQ
 
