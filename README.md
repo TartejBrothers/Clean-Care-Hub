@@ -8,9 +8,7 @@
 
 <h3 align="center">PPT PRESENTATION</h3>
 <p align="center">
-
 [Link to PPT](https://docs.google.com/presentation/d/1lgM9AowM0eXNXF017U9JQ7YBHTPlmkO3Y9bioiH9NIU/edit?usp=sharing)
-
 </p>
 <h3 align="center">Working Example</h3>
 <div align="center">
